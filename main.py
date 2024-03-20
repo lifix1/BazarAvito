@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'bazarvito_secret_key'
 
 
-@app.route('/index')
+@app.route('/')
 def index():
     return render_template('index.html', title='Bazarvito')
 
