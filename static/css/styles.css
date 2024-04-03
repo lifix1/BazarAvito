@@ -1,0 +1,137 @@
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px;
+  margin-left: 16%;
+  margin-right: 9%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+#logo {
+  width: 100px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.navbar-light {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #333;
+  font-size: 14px;
+  padding: 0.5rem 0.75rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #446cb3;
+}
+
+.navbar-light .navbar-brand {
+  color: #446cb3;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-light .navbar-toggler-icon {
+  color: #333;
+}
+
+@media (max-width: 767.98px) {
+  .navbar-light .navbar-nav .nav-link {
+    padding: 0.5rem;
+  }
+}
+
+.dropdown-menu {
+  min-width: 300px;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.5rem;
+}
+
+    form {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    }
+
+    form p {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.1);
+    }
+
+    .form-control:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0,123,255,0.8);
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0062cc;
+    }
+
+    .alert-danger {
+        margin-top: 5px;
+    }
+    .register-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
+        .register-button:hover {
+        background-color: #0062cc;
+    }
