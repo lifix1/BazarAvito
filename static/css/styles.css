@@ -7,6 +7,19 @@
   margin-right: 9%;
 }
 
+.category {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.category img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
