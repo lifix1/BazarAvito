@@ -27,9 +27,15 @@
                     </div>
                 </div>
                 <div class="navbar-nav ml-auto" style="margin-left: auto">
+                    {% if not current_user %}
                     <div class="nav-item">
                         <a class="nav-link" href="/login">Вход и регистрация</a>
                     </div>
+                    {% elif current_user %}
+                    <div class="nav-item">
+                        <a class="nav-link" href="/profile">Личный кабинет</a>
+                    </div>
+                    {% endif %}
                     <div class="nav-item">
                         <a class="nav-link" href="#">Разместить объявление</a>
                     </div>
