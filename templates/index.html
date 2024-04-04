@@ -1,45 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="main-category">
-        <h2>Categories</h2>
-        <div class="category">
-            <h4>Autos</h4>
-            <img src="static/img/auto.jpg" alt="Auto image">
-        </div>
-        <div class="category">
-            <h4>Real Estate</h4>
-            <img src="static/img/house.jpg" alt="House image">
-        </div>
-        <div class="category">
-            <h4>Cloth</h4>
-            <img src="static/img/cloth.jpg" alt="Cloth image">
-        </div>
 
+<html>
+<head>
+    <title class="title">Categories</title>
+</head>
+<body>
+<div class="card-group">
+  <a href="#" class="nav-link"><div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
     </div>
-    <div class="main-category">
-        <div class="category">
-            <h4>Animal</h4>
-            <img src="static/img/cat.jpg" alt="Animal image">
-        </div>
-        <div class="category">
-            <h4>electronics</h4>
-            <img src="static/img/electronics.jpg" alt="Electronics image">
-        </div>
-        <div class="category">
-            <h4>For home</h4>
-            <img src="static/img/for_home.jpg" alt="For_home image">
-        </div>
+
+  </div>
+  </a>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
     </div>
-    <h2 style="margin-left: 15%">Объявления</h2>
-    <div style="display: flex; justify-content: space-beetween; margin-left: 15%; margin-right: 15%">
-        {% for offer in data %}
-            <div class="category">
-                <a href="#" class="nav-link">
-                    <img src="static/img/{{ offer[-1] }}">
-                    <h1>{{ offer[1] }}</h1>
-                </a>
-            </div>
-        {% endfor %}
+  </div>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
     </div>
+  </div>
+</div>
+</body>
+</html>
 {% endblock %}
