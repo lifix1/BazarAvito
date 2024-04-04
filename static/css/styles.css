@@ -6,6 +6,51 @@
   margin-left: 16%;
   margin-right: 9%;
 }
+.title {
+  margin-top: -250px;
+  position: relative;
+  text-align: center;
+}
+.astext {
+  background:none;
+  color: #87CEEB;
+  border:none;
+  margin:8px;
+  margin: 4px 2px;
+  padding: 15px 32px;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.button-usual{
+  background-color: #B0E0E6;
+  color: white;
+  padding: 15px 32px;
+  font-size: 12px;
+  weight: 20
+  height: 10
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button-blue{
+  background-color: #00BFFF;
+  color: white;
+  padding: 15px 32px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+        }
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  line-height: 20px;
+  weight: 30px;
+  margin: 15px;
+  font-family: Arial, sans-serif;
+}
 
 .category {
   display: flex;
@@ -19,6 +64,11 @@
   object-fit: cover;
   margin-right: 16px;
 }
+
+.main-category {
+display: flex;
+justify-content: center;
+padding: 4%;
 
 .logo-container {
   display: flex;
