@@ -13,10 +13,6 @@ login_manager.init_app(app)
 db_session.global_init("db/users.db")
 
 
-def connectdb(name):
-    con = sqlite3.connect(name)
-    cur = con.cursor()
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -26,8 +22,12 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+    con = sqlite3.connect('db/main.db')
+    cur = con.cursor()
+    data = list(cur.execute('select * from all_offers'))
+    con.close()
     return render_template('index.html', title='Bazarvito',
-                           current_user=current_user if current_user.is_authenticated else False)
+                           current_user=current_user if current_user.is_authenticated else False, data=data)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -88,6 +88,17 @@ def logout():
 @login_required
 def profile():
     return render_template('profile.html')
+
+
+@app.route('/additem')
+@login_required
+def additem():
+    con = sqlite3.connect('db/main.db')
+    cur = con.cursor()
+    cur.execute('select 1 from all_offers')
+    columns = list(map(lambda x: x[0], cur.description))
+    names = ['Название', 'Описание', 'Адрес', 'Цена']
+    return render_template('additem.html', names=names, columns=columns)
 
 
 if __name__ == '__main__':

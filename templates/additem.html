@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form class="row justify-content-md-center" method="post" style="">
+    {% for name in names %}
+    {% for column in columns %}
+    <div class="col-md-5">
+        <label for="{{ column }}" class="form-label">{{ name }}</label>
+        <input type="text" class="form-control" id="{{ column }}">
+    </div>
+    {% endfor %}
+    {% endfor %}
+    <div class="col-12" style="display: flex; justify-content: center; margin-top: 1%;">
+        <button type="submit" class="btn btn-primary">Разместить</button>
+    </div>
+</form>
+{% endblock %}

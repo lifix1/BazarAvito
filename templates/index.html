@@ -1,12 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<html>
-<head>
-    <title class="title">Categories</title>
-</head>
-<body>
     <div class="main-category">
         <h2>Categories</h2>
         <div class="category">
@@ -37,7 +31,15 @@
             <img src="static/img/for_home.jpg" alt="For_home image">
         </div>
     </div>
-    <!-- Add more categories as needed -->
-</body>
-</html>
+    <h2 style="margin-left: 15%">Объявления</h2>
+    <div style="display: flex; justify-content: space-beetween; margin-left: 15%; margin-right: 15%">
+        {% for offer in data %}
+            <div class="category">
+                <a href="#" class="nav-link">
+                    <img src="static/img/{{ offer[-1] }}">
+                    <h1>{{ offer[1] }}</h1>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
