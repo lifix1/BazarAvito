@@ -1,9 +1,13 @@
+import os
+
 from flask import Flask, render_template, redirect, url_for, request
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from data import db_session
 from data.users import User
+from data.items import Item
 from forms.RegistrForm import RegisterForm
 from forms.LoginForm import LoginForm
+from forms.ItemForm import ItemForm
 import sqlite3
 
 app = Flask(__name__)
@@ -11,7 +15,6 @@ app.config['SECRET_KEY'] = 'bazarvito_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_session.global_init("db/users.db")
-
 
 
 @login_manager.user_loader
@@ -93,6 +96,19 @@ def profile():
 @app.route('/additem')
 @login_required
 def additem():
+    form = ItemForm()
+    if form.validate_on_submit():
+        item = Item(
+            name=form.name.data,
+            description=form.description.data,
+            price=form.price.data,
+            adress=form.adress.data,
+            img=form.img.data
+        )
+        db_sess = db_session.create_session()
+        db_sess.add(item)
+        db_sess.commit()
+        return redirect('/additem')
     con = sqlite3.connect('db/main.db')
     cur = con.cursor()
     cur.execute('select 1 from all_offers')

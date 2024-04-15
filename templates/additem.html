@@ -10,6 +10,11 @@
     </div>
     {% endfor %}
     {% endfor %}
+    <div class="col-md-5">
+        <label class="form-label">Изображение</label>
+        <input type="hidden" name="img" value="{{ img }}">
+        <input type="file" name="image">
+    </div>
     <div class="col-12" style="display: flex; justify-content: center; margin-top: 1%;">
         <button type="submit" class="btn btn-primary">Разместить</button>
     </div>
