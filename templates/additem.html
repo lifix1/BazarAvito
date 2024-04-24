@@ -1,22 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form class="row justify-content-md-center" method="post" style="">
-    {% for name in names %}
-    {% for column in columns %}
+<form class="row justify-content-md-center" method="post" style="" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
     <div class="col-md-5">
-        <label for="{{ column }}" class="form-label">{{ name }}</label>
-        <input type="text" class="form-control" id="{{ column }}">
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control", type="name") }}<br>
+        {% for error in form.name.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
     </div>
-    {% endfor %}
-    {% endfor %}
     <div class="col-md-5">
-        <label class="form-label">Изображение</label>
-        <input type="hidden" name="img" value="{{ img }}">
-        <input type="file" name="image">
+        {{ form.description.label }}<br>
+        {{ form.description(class="form-control", type="description") }}<br>
+        {% for error in form.description.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
     </div>
-    <div class="col-12" style="display: flex; justify-content: center; margin-top: 1%;">
-        <button type="submit" class="btn btn-primary">Разместить</button>
+    <div class="col-md-5">
+        {{ form.adress.label }}<br>
+        {{ form.adress(class="form-control", type="adress") }}<br>
+        {% for error in form.adress.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
     </div>
+    <div class="col-md-5">
+        {{ form.price.label }}<br>
+        {{ form.price(class="form-control") }}<br>
+        {% for error in form.price.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="col-md-5">
+        {{ form.img.label }}<br>
+        {{ form.img(class="form-control") }}<br>
+        {% for error in form.img.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div style=" justify-content: center; display: flex">{{ form.submit(type="submit", class="btn btn-primary") }}</div>
+    {{message}}
 </form>
 {% endblock %}
