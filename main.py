@@ -8,10 +8,12 @@ from data.items import Item
 from forms.RegistrForm import RegisterForm
 from forms.LoginForm import LoginForm
 from forms.ItemForm import ItemForm
+from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'bazarvito_secret_key'
+app.config['UPLOAD_FOLDER'] = 'static/img'
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_session.global_init("db/users.db")
@@ -93,28 +95,30 @@ def profile():
     return render_template('profile.html')
 
 
-@app.route('/additem')
+@app.route('/additem', methods=['GET', 'POST'])
 @login_required
 def additem():
     form = ItemForm()
     if form.validate_on_submit():
-        item = Item(
-            name=form.name.data,
-            description=form.description.data,
-            price=form.price.data,
-            adress=form.adress.data,
-            img=form.img.data
-        )
-        db_sess = db_session.create_session()
-        db_sess.add(item)
-        db_sess.commit()
+        name = form.name.data
+        price = form.price.data
+        adress = form.adress.data
+        description = form.description.data
+        img = request.files['img']
+        if img:
+            filename = os.path.join('static/img/', img.filename)
+            img.save(filename)
+        else:
+            filename = 'base.jpg'
+
+        con = sqlite3.connect('db/main.db')
+        cur = con.cursor()
+        cur.execute('INSERT INTO all_offers (name, description, adress, price, img) VALUES (?, ?, ?, ?, ?)',
+                    (name, description, adress, int(price), img.filename))
+        con.commit()
+        con.close()
         return redirect('/additem')
-    con = sqlite3.connect('db/main.db')
-    cur = con.cursor()
-    cur.execute('select 1 from all_offers')
-    columns = list(map(lambda x: x[0], cur.description))
-    names = ['Название', 'Описание', 'Адрес', 'Цена']
-    return render_template('additem.html', names=names, columns=columns)
+    return render_template('additem.html', form=form)
 
 
 if __name__ == '__main__':

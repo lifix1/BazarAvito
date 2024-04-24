@@ -1,6 +1,7 @@
 import datetime
 import sqlalchemy
 from flask_login import UserMixin
+from sqlalchemy_file import FileField
 
 from .db_session import SqlAlchemyBase
 
@@ -14,4 +15,4 @@ class Item(SqlAlchemyBase, UserMixin):
     description = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     adress = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     price = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
-    img = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    img = sqlalchemy.Column(FileField, nullable=False)
