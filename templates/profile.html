@@ -1,20 +1,23 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-<html>
-<head>
+<div class="container">
+<div class="row justify-content-center mt-5">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h1 class="text-center">Привет, {{ first_name }}</h1>
+</div>
+<div class="card-body">
 
-</head>
-<body>
-    <button class="astext button-container">Настройки</button>
-    <button class="astext button-container">Избранные</button>
-    <button class="astext button-container">Резюме</button>
-    <div>
-        <center>
-            <a href="/additem"><button class="button-blue">разместить объявление</button></a>
-        </center>
-
-    </div>
-
-</body>
-</html>
+<p>Ваши данные:</p>
+<p>Email: {{ email }}</p>
+<div class="text-center">
+<a href="{{ url_for('logout') }}" class="btn btn-secondary">Выход</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
