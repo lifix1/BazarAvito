@@ -9,7 +9,6 @@ from forms.RegistrForm import RegisterForm
 from forms.LoginForm import LoginForm
 from forms.ItemForm import ItemForm
 from flask_sqlalchemy import SQLAlchemy
-from urllib.parse import urlparse, parse_qs
 import sqlite3
 
 app = Flask(__name__)
