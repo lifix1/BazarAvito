@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/static/img/{{ data[5] }}" class="img-fluid rounded" alt="Offer Image">
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">{{ data[1] }}</h2>
+            <p class="lead">Описание объявление:</p>
+            <p>{{ data[2] }}</p>
+            <p class="lead">Цена: <span class="text-success">{{ data[4] }}</span></p>
+            <p class="mb-4">Вы можете позвонить владельцу чтобы договориться о сделке: <strong>{{ phone }}</strong></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

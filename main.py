@@ -9,6 +9,7 @@ from forms.RegistrForm import RegisterForm
 from forms.LoginForm import LoginForm
 from forms.ItemForm import ItemForm
 from flask_sqlalchemy import SQLAlchemy
+from urllib.parse import urlparse, parse_qs
 import sqlite3
 
 app = Flask(__name__)
@@ -52,6 +53,10 @@ def register():
             return render_template('registr_form.html', title='Регистрация',
                                    form=form,
                                    message="Номер телефона ввёден неправильно")
+        if db_sess.query(User).filter(User.phone_number == form.phone_number.data).first():
+            return render_template('registr_form.html', title='Регистрация',
+                                   form=form,
+                                   message="Номер телефона уже занят")
         user = User(
             first_name=form.first_name.data,
             last_name=form.last_name.data,
@@ -92,7 +97,9 @@ def logout():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.email == current_user.email).first()
+    return render_template('profile.html', user=user)
 
 
 @app.route('/additem', methods=['GET', 'POST'])
@@ -105,6 +112,7 @@ def additem():
         adress = form.adress.data
         description = form.description.data
         img = request.files['img']
+        category = form.category.data
         if img:
             filename = os.path.join('static/img/', img.filename)
             img.save(filename)
@@ -113,14 +121,38 @@ def additem():
 
         con = sqlite3.connect('db/main.db')
         cur = con.cursor()
-        cur.execute('INSERT INTO all_offers (name, description, adress, price, img) VALUES (?, ?, ?, ?, ?)',
-                    (name, description, adress, int(price), img.filename))
+        cur.execute(
+            ('INSERT INTO all_offers (name, description, adress, price, img, seller, category)'
+             ' VALUES (?, ?, ?, ?, ?, ?, ?)'),
+            (name, description, adress, int(price), img.filename, current_user.email, category))
         con.commit()
         con.close()
         return redirect('/additem')
     return render_template('additem.html', form=form)
 
 
+@app.route('/viewitem/<int:id>', methods=['GET'])
+def viewitem(id):
+    con = sqlite3.connect('db/main.db')
+    cur = con.cursor()
+    data = cur.execute('select * from all_offers where id == ?', (str(id))).fetchone()
+    db_sess = db_session.create_session()
+    phone_number = db_sess.query(User).filter(User.email == data[-2]).first().phone_number
+    return render_template('viewitem.html', data=data, phone=phone_number)
+
+
+@app.route('/help')
+def help():
+    return "Нам бы кто-нибудь помог"
+
+
+@app.route('/category/<string:category>')
+def category(category):
+    con = sqlite3.connect('db/main.db')
+    cur = con.cursor()
+    data = cur.execute('select * from all_offers where category == "' + category + '"').fetchall()
+    return render_template('category.html', data=data, category=category)
+
+
 if __name__ == '__main__':
-    # create_db()
     app.run(host='127.0.0.1', port=8080)

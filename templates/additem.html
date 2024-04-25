@@ -40,6 +40,15 @@
         {% endfor %}
     </div>
     <div class="col-md-5">
+        {{ form.category.label }}<br>
+        {{ form.category(class="form-control") }}<br>
+        {% for error in form.category.errors %}
+        <p class="alert alert-danger" role="alert">
+            {{ error }}
+        </p>
+        {% endfor %}
+    </div>
+    <div class="col-md-5">
         {{ form.img.label }}<br>
         {{ form.img(class="form-control") }}<br>
         {% for error in form.img.errors %}

@@ -16,3 +16,4 @@ class Item(SqlAlchemyBase, UserMixin):
     adress = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     price = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
     img = sqlalchemy.Column(FileField, nullable=False)
+    category = sqlalchemy.Column(sqlalchemy.String, nullable=False)

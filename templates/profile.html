@@ -6,12 +6,13 @@
 <div class="col-md-6">
 <div class="card">
 <div class="card-header">
-<h1 class="text-center">Привет, {{ first_name }}</h1>
+<h1 class="text-center">Привет, {{ user.first_name }} {{ user.last_name }}</h1>
 </div>
 <div class="card-body">
 
 <p>Ваши данные:</p>
-<p>Email: {{ email }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Номер телефона: {{ user.phone_number }}</p>
 <div class="text-center">
 <a href="{{ url_for('logout') }}" class="btn btn-secondary">Выход</a>
 </div>

@@ -4,71 +4,71 @@
 <div class="container">
     <div class="row">
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Автотранспорт"><button type="button">
   <img src="/static/img/auto.jpg" class="card-img-top" alt="...">
 
             <div class="card-body">
     <p class="card-text">АВТОТРАНСПОРТ</p>
 
   </div>
-            </button>
+            </button></a>
 </div>
 
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Питомцы"><button type="button">
   <img src="/static/img/cat.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">ПИТОМЦЫ</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Одежда"><button type="button">
   <img src="/static/img/cloth.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">ОДЕЖДА</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Электроника"><button type="button">
   <img src="/static/img/electronics.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">ЭЛЕКТРОНИКА</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Для дома"><button type="button">
   <img src="/static/img/for_home.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">ДЛЯ ДОМА</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Недвижимость"><button type="button">
   <img src="/static/img/house.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">НЕДВИЖИМОСТЬ</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Работа"><button type="button">
   <img src="/static/img/job.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">РАБОТА</p>
   </div>
-            </button>
+            </button></a>
 </div>
         <div class="card" style="width: 18rem;">
-            <button type="button">
+            <a href="/category/Красота"><button type="button">
   <img src="/static/img/beaty.jpeg" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text">КРАСОТА</p>
   </div>
-            </button>
+            </button></a>
 </div>
     </div>
 </div>
@@ -76,8 +76,8 @@
     <div style="display: flex; justify-content: space-beetween; margin-left: 15%; margin-right: 15%">
         {% for offer in data %}
             <div class="category">
-                <a href="#" class="nav-link">
-                    <img src="static/img/{{ offer[-1] }}">
+                <a href="/viewitem/{{ offer[0] }}" class="nav-link">
+                    <img src="static/img/{{ offer[-3] }}">
                     <h1>{{ offer[1] }}</h1>
                 </a>
             </div>
